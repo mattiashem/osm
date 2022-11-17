@@ -1,0 +1,16 @@
+build:
+  tags:
+   - k8s
+   - int
+  only:
+  - main
+  stage: build
+  services:
+  - docker:dind
+  script:
+  - sleep 2
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN git.booli.se:4567
+  - docker build -t git.booli.se:4567/booli/booli-se-maps:osm-$CI_COMMIT_SHORT_SHA ./osm/
+  - docker push git.booli.se:4567/booli/booli-se-maps:osm-$CI_COMMIT_SHORT_SHA
+  - docker tag git.booli.se:4567/booli/booli-se-maps:osm$CI_COMMIT_SHORT_SHA git.booli.se:4567/booli/booli-se-ads:osm-latest
+  - docker push git.booli.se:4567/booli/booli-se-maps:osmlatest
