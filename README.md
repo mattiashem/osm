@@ -1,4 +1,4 @@
-# Booli Maps
+# OSM Maps
 
 Maps server that start up Openstreat map server and using a external postgress
 
