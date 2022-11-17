@@ -34,6 +34,13 @@ The webb will run the web javascript and connect to the osm server.
 It will then displat the map to use.
 
 
+```
+you can find the web on http://localhost:8081 
+```
+
+The webb will connect to osm and get the tiles needed when browsing the map
+
+
 ## Status
 the status folder is used to set the state. I file will be created there called import.
 then the files id there osm will start.
