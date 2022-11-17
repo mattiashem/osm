@@ -12,5 +12,13 @@ build:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN git.booli.se:4567
   - docker build -t git.booli.se:4567/booli/booli-se-maps:osm-$CI_COMMIT_SHORT_SHA ./osm/
   - docker push git.booli.se:4567/booli/booli-se-maps:osm-$CI_COMMIT_SHORT_SHA
-  - docker tag git.booli.se:4567/booli/booli-se-maps:osm$CI_COMMIT_SHORT_SHA git.booli.se:4567/booli/booli-se-ads:osm-latest
-  - docker push git.booli.se:4567/booli/booli-se-maps:osmlatest
+  - docker tag git.booli.se:4567/booli/booli-se-maps:osm-$CI_COMMIT_SHORT_SHA git.booli.se:4567/booli/booli-se-ads:osm-latest
+  - docker push git.booli.se:4567/booli/booli-se-maps:osm-latest
+  - docker build -t git.booli.se:4567/booli/booli-se-maps:postgres-$CI_COMMIT_SHORT_SHA ./postgres/
+  - docker push git.booli.se:4567/booli/booli-se-maps:postgres-$CI_COMMIT_SHORT_SHA
+  - docker tag git.booli.se:4567/booli/booli-se-maps:postgres-$CI_COMMIT_SHORT_SHA git.booli.se:4567/booli/booli-se-ads:postgres-latest
+  - docker push git.booli.se:4567/booli/booli-se-maps:postgres-latest
+  - docker build -t git.booli.se:4567/booli/booli-se-maps:web-$CI_COMMIT_SHORT_SHA ./web/
+  - docker push git.booli.se:4567/booli/booli-se-maps:web-$CI_COMMIT_SHORT_SHA
+  - docker tag git.booli.se:4567/booli/booli-se-maps:web-$CI_COMMIT_SHORT_SHA git.booli.se:4567/booli/booli-se-ads:web-latest
+  - docker push git.booli.se:4567/booli/booli-se-maps:web-latest
