@@ -31,5 +31,5 @@ cp /opt/src/openstreetmap-carto/external-data.yml .
 /opt/src/openstreetmap-carto/scripts/get-external-data.py
 fi
 
-echo "All done but keep up" >> /status/imported
-tail -f /status
+echo "All done going Zoombie " >> /status/imported
+tail -f /status/imported
