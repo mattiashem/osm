@@ -1,0 +1,38 @@
+services:
+  import-tiles:
+    build: ./osm
+    init: true
+    command: /entrypoint/init.sh
+    environment:
+      PGHOST: postgres
+      PGPASSWORD: example
+      PGUSER: _renderd
+      PGDATABASE: gis
+    depends_on:
+      - postgres
+    volumes:
+     - ./status:/status
+  osm:
+    build: ./osm
+    environment:
+      PGHOST: postgres
+      PGPASSWORD: example
+      PGUSER: _renderd
+      PGDATABASE: gis
+    ports:
+     - 8080:80
+    depends_on:
+     - postgres
+    volumes:
+      - ./status:/status
+  web:
+    build: ./web
+    ports:
+     - 8081:80
+
+  postgres:
+    build: ./postgres
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: _renderd
+      POSTGRES_DB: gis
